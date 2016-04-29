@@ -16,6 +16,7 @@ public class FileUtils {
     private static final String TAG = "FILE";
     private static final String SEPARATOR = "======================";
     private static final String HEADER = "INSTALLED APPS";
+    private static final File DEFAULT_DIRECTORY = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
 
     public static String generateTextFromList(Context context, List<ResolveInfo> appsList) {
         StringBuilder sb = new StringBuilder();
@@ -31,14 +32,12 @@ public class FileUtils {
         }
         return sb.toString();
     }
+    public static boolean saveTextFileToExternalStorage(final String text, final String filename) throws IOException {
 
-    public static boolean saveTextFileToExternalStorage(String text, String filename) throws IOException {
-
-        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        boolean mkdirSuccess = directory.mkdirs();
+        boolean mkdirSuccess = DEFAULT_DIRECTORY.mkdirs();
         Log.d(TAG, "directories successfully created: " + mkdirSuccess);
 
-        File appListTextFile = new File(directory, filename);
+        File appListTextFile = new File(DEFAULT_DIRECTORY, filename);
         if (!appListTextFile.exists()) {
             boolean newFileSuccess = appListTextFile.createNewFile();
             Log.d(TAG, "new file successfully created: " + newFileSuccess);
@@ -51,10 +50,14 @@ public class FileUtils {
             writer.close();
             outputStream.close();
 
-            Log.d(TAG, "File " + filename + " saved in directory " + directory);
+            Log.d(TAG, "File " + filename + " saved in directory " + DEFAULT_DIRECTORY);
             return true;
         }
 
         return false;
+    }
+
+    public static File getDefaultDirectory() {
+        return DEFAULT_DIRECTORY;
     }
 }
