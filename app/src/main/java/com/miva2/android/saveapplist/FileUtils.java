@@ -14,17 +14,20 @@ import java.util.List;
 public class FileUtils {
 
     private static final String TAG = "FILE";
+    private static final String SEPARATOR = "======================";
+    private static final String HEADER = "INSTALLED APPS";
 
     public static String generateTextFromList(Context context, List<ResolveInfo> appsList) {
         StringBuilder sb = new StringBuilder();
-        sb.append("INSTALLED APPS\n\n\n");
+        sb.append(HEADER + "\n\n\n");
 
         for (ResolveInfo app : appsList) {
+
             sb.append(app.resolvePackageName).append("\n")
                     .append(app.activityInfo.packageName).append("\n")
                     .append(app.loadLabel(context.getPackageManager())).append("\n")
                     .append(app.nonLocalizedLabel).append("\n")
-                    .append("\n======================\n");
+                    .append("\n" + SEPARATOR + "\n");
         }
         return sb.toString();
     }
