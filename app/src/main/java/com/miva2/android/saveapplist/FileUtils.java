@@ -24,7 +24,7 @@ public class FileUtils {
                     .append(app.activityInfo.packageName).append("\n")
                     .append(app.loadLabel(context.getPackageManager())).append("\n")
                     .append(app.nonLocalizedLabel).append("\n")
-                    .append("\n=============================================\n");
+                    .append("\n======================\n");
         }
         return sb.toString();
     }
