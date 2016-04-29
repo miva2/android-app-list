@@ -10,12 +10,6 @@
     tools:context=".SaveFragment"
     tools:showIn="@layout/activity_save">
 
-    <Button
-        android:id="@+id/savebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_save_list"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Save app list</string>
     <string name="action_settings">Settings</string>
-    <string name="button_save_list">save list</string>
     <string name="text_explanation">Press the button to save a list of all your apps!</string>
+    <string name="save_success">save success</string>
+    <string name="save_failed">save failed</string>
 </resources>
